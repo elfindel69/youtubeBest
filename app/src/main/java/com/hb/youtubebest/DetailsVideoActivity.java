@@ -40,5 +40,7 @@ public class DetailsVideoActivity extends AppCompatActivity {
         tvDesc.setText(video.getDescription());
         tvUrl.setText(String.format(Locale.FRANCE,"%s%s", YT_URL, video.getUrl()));
         tvCategory.setText(video.getCategory());
+
+
     }
 }
