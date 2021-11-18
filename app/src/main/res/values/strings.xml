@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">YoutubeBest</string>
+    <string name="title">title</string>
+    <string name="description">description</string>
+    <string name="add_video">add video</string>
+    <string name="ajouter">Ajouter</string>
+</resources>
