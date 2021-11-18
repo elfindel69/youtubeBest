@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.hb.youtubebest.dao.VideoDAO;
 import com.hb.youtubebest.pojos.Video;
@@ -33,11 +32,11 @@ public class AddVideoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_video);
 
-        etTitle.findViewById(R.id.etTitle);
-        etDesc.findViewById(R.id.tvDescription);
-        etUrl.findViewById(R.id.etUrl);
-        spCategory.findViewById(R.id.spCategory);
-        btnAdd.findViewById(R.id.btnAdd);
+        etTitle = findViewById(R.id.etTitle);
+        etDesc = findViewById(R.id.etDesc);
+        etUrl = findViewById(R.id.etUrl);
+        spCategory = findViewById(R.id.spCategory);
+        btnAdd = findViewById(R.id.btnAdd);
 
         context = getApplicationContext();
         videoDAO = new VideoDAO(context);

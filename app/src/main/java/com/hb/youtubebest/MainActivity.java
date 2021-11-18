@@ -22,10 +22,10 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String KEY_VIDEO = "video";
     private Context context;
     private RecyclerView rvVideo;
     private VideoDAO videoDAO;
-    private VideoAdapter videoAdapter;
     private VideoAsyncTasks videoAsyncTask;
 
     @Override
@@ -79,8 +79,12 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(List<Video> videos){
-            videoAdapter = new VideoAdapter(videos);
-            rvVideo.setAdapter(videoAdapter);
+            rvVideo.setAdapter(new VideoAdapter(videos, item -> {
+                System.out.println("click");
+                Intent intent = new Intent(context, DetailsVideoActivity.class);
+                intent.putExtra(KEY_VIDEO,item);
+                startActivity(intent);
+            }));
         }
 
 

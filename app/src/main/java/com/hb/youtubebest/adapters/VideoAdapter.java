@@ -16,6 +16,11 @@ import java.util.List;
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHolder>{
 
     private List<Video> videos;
+    private final OnItemClickListener listener;
+
+    public interface OnItemClickListener {
+        void onItemClick(Video item);
+    }
 
     public class VideoViewHolder extends RecyclerView.ViewHolder{
         public TextView tvTitle;
@@ -26,10 +31,20 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvDescription = itemView.findViewById(R.id.tvDescription);
         }
+        public void bind(final Video item, final OnItemClickListener listener) {
+            tvTitle.setText(item.getTitle());
+            tvDescription.setText(item.getDescription());
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    listener.onItemClick(item);
+                }
+            });
+        }
     }
 
-    public VideoAdapter(List<Video> videos){
+    public VideoAdapter(List<Video> videos, OnItemClickListener listener){
         this.videos = videos;
+        this.listener = listener;
     }
 
 
@@ -44,10 +59,9 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
     @Override
     public void onBindViewHolder(@NonNull VideoAdapter.VideoViewHolder holder, int position) {
-        Video todo = videos.get(position);
+        Video video = videos.get(position);
 
-        holder.tvTitle.setText(todo.getTitle());
-        holder.tvDescription.setText(todo.getDescription());
+        holder.bind(video,listener);
     }
 
     @Override

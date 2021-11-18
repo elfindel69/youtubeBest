@@ -4,4 +4,7 @@
     <string name="description">description</string>
     <string name="add_video">add video</string>
     <string name="ajouter">Ajouter</string>
+    <string name="url">URL</string>
+    <string name="category">Category</string>
+    <string name="view">View</string>
 </resources>

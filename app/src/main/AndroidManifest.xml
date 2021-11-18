@@ -10,10 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.YoutubeBest">
         <activity
+            android:name=".DetailsVideoActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddVideoActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity"/>
-
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -22,11 +22,8 @@ public class Video implements Parcelable {
     }
 
     protected Video(Parcel in) {
-        if (in.readByte() == 0) {
-            id = null;
-        } else {
-            id = in.readLong();
-        }
+
+        id = in.readLong();
         title = in.readString();
         description = in.readString();
         url = in.readString();
@@ -97,5 +94,16 @@ public class Video implements Parcelable {
         dest.writeString(description);
         dest.writeString(url);
         dest.writeString(category);
+    }
+
+    @Override
+    public String toString() {
+        return "Video{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", url='" + url + '\'' +
+                ", category='" + category + '\'' +
+                '}';
     }
 }
