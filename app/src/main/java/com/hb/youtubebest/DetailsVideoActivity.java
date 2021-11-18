@@ -2,6 +2,7 @@ package com.hb.youtubebest;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,7 +14,7 @@ import com.hb.youtubebest.pojos.Video;
 import java.util.Locale;
 
 public class DetailsVideoActivity extends AppCompatActivity {
-    private static final String YT_URL = "https://www.youtube.com/";
+    private static final String YT_URL = "https://www.youtube.com/watch?v=";
     private Video video;
     private TextView tvTitle;
     private TextView tvDesc;
@@ -43,9 +44,15 @@ public class DetailsVideoActivity extends AppCompatActivity {
         tvCategory.setText(video.getCategory());
 
         btnView.setOnClickListener(v -> {
+
+            Intent appIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + video.getUrl()));
             Intent webIntent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse(String.format(Locale.FRANCE,"%s%s", YT_URL, video.getUrl())));
-            startActivity(webIntent);
+                    Uri.parse(YT_URL + video.getUrl()));
+            try {
+                startActivity(appIntent);
+            } catch (ActivityNotFoundException ex) {
+                startActivity(webIntent);
+            }
         });
     }
 }
