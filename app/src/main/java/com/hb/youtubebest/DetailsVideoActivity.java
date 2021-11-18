@@ -3,6 +3,7 @@ package com.hb.youtubebest;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -41,6 +42,10 @@ public class DetailsVideoActivity extends AppCompatActivity {
         tvUrl.setText(String.format(Locale.FRANCE,"%s%s", YT_URL, video.getUrl()));
         tvCategory.setText(video.getCategory());
 
-
+        btnView.setOnClickListener(v -> {
+            Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(String.format(Locale.FRANCE,"%s%s", YT_URL, video.getUrl())));
+            startActivity(webIntent);
+        });
     }
 }
